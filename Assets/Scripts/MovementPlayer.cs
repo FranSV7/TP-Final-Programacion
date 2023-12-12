@@ -5,12 +5,18 @@ using UnityEngine;
 public class MovementPlayer : MonoBehaviour
 {
     private Rigidbody2D rb;
-    [SerializeField] private float movSpeed;
     private Vector2 moveDir;
     private Animator animator;
+    Vector3 mousePosition;
+
+    [Header("Stats Player")]
+    [SerializeField] private float movSpeed;
+
+    [Header("Sprites Renderer")]
     public SpriteRenderer playerRender;
     public SpriteRenderer weaponRender;
-    Vector3 mousePosition;
+
+    [Header("Transform")]
     public Transform weapon;
     
 
