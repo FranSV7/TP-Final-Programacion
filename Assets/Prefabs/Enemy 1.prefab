@@ -206,7 +206,7 @@ Transform:
   m_GameObject: {fileID: 1173520814761593782}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.354, y: -0.54, z: 0.15}
+  m_LocalPosition: {x: -4.354, y: -0.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -363,6 +363,12 @@ MonoBehaviour:
   damage: 10
   moveSpeed: 3
   healthSlider: {fileID: 8766647240557446373}
+  enemyRotate: {fileID: 8217294516768625342}
+  enemyRender: {fileID: 3973862682651143079}
+  gameManager: {fileID: 0}
+  objetoArotar: {fileID: 8217294516768625342}
+  velocidadRotacion: 180
+  anguloMaximo: 180
 --- !u!1 &3427602977082549490
 GameObject:
   m_ObjectHideFlags: 0

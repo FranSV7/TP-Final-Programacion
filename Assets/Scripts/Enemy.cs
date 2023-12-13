@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class Enemy : MonoBehaviour
 {
@@ -19,15 +20,25 @@ public class Enemy : MonoBehaviour
     [Header("Health Slider")]
     public Slider healthSlider;
 
+    private SpriteRenderer enemyRender;
     private bool Attack = false;
     private Vector3 moveDirection;
     private GameObject player;
-    
+    private GameObject enemyCounts;
+    public GameManager gameManager;
+
+    private Vector3 enemyPosition;
+   
+
+
 
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         activeItem = Random.Range(0, items.Length);
+        enemyCounts = GameObject.FindWithTag("SpawnManager");
+        enemyPosition = transform.position;
+        enemyRender = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -46,10 +57,24 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
 
-            Instantiate(items[activeItem], transform.position, Quaternion.identity);
+            gameManager.UpdateKills();
+
+            enemyCounts.GetComponent<SpawnEnemies>().enemyCount -= 1;
+
+            Instantiate(items[activeItem], transform.position, Quaternion.identity);   
+        }
+        Vector3 direccionMovimiento = transform.position - enemyPosition;
+
+        if (direccionMovimiento.x > 0) // Si se está moviendo a la derecha
+        {
+            enemyRender.flipX = false; // No voltear el sprite
+        }
+        else if (direccionMovimiento.x < 0) // Si se está moviendo a la izquierda
+        {
+            enemyRender.flipX = true; // Voltear el sprite horizontalmente
         }
 
-
+        enemyPosition = transform.position;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -58,6 +83,5 @@ public class Enemy : MonoBehaviour
             player.GetComponent<PlayerStats>().maxHealth -= damage;
         }
     }
-
 }
     

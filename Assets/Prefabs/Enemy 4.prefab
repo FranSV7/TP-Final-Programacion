@@ -429,6 +429,7 @@ MonoBehaviour:
   damage: 25
   moveSpeed: 4
   healthSlider: {fileID: 4218284037957626629}
+  gameManager: {fileID: 0}
 --- !u!60 &4735604868570230774
 PolygonCollider2D:
   m_ObjectHideFlags: 0

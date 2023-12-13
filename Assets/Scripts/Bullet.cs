@@ -8,7 +8,18 @@ public class BulletDestroy : MonoBehaviour
     [SerializeField] private GameObject hitEffect;
 
     [Header("Stats Bullet")]
-    public int bulletDamage = 10;
+    public int bulletDamage = 0;
+
+    void Start()
+    {
+        bulletDamage = 10;
+        
+    }
+
+    void Update()
+    {
+        
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

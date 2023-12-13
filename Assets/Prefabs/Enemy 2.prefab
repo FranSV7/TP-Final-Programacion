@@ -278,6 +278,7 @@ MonoBehaviour:
   damage: 10
   moveSpeed: 2
   healthSlider: {fileID: 2499069323610939984}
+  gameManager: {fileID: 0}
 --- !u!1 &5630806303381376699
 GameObject:
   m_ObjectHideFlags: 0
