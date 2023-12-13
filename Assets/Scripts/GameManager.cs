@@ -27,11 +27,15 @@ public class GameManager : MonoBehaviour
         leftTime = maxTime;
         winUI.SetActive(false);
         powerUps.SetActive(false);
-        
+        inGame = true;
     }
 
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.G))
+        {
+            Debug.Log(inGame);
+        }
         if (activeTime)
         {
             leftTime -= Time.deltaTime;
@@ -82,6 +86,8 @@ public class GameManager : MonoBehaviour
             powerUps.SetActive(false);
             Time.timeScale = 1f;
             inGame = true;
+            Debug.Log("resumido" + inGame);
+
         }
     }
 
@@ -90,19 +96,21 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         powerUps.SetActive(true);
+        inGame = false;
     }
 
     public void ApplyDamagePowerUp(int damageIncrease)
     {
         if (bullet != null)
         {
-            bullet.bulletDamage += damageIncrease; // Incrementa el daño del proyectil
+            bullet.bulletDamage += damageIncrease; 
             Debug.Log("Daño del proyectil aumentado a: " + bullet.bulletDamage);
         }
         else
         {
             Debug.LogWarning("No se encontró el componente BulletDestroy en el GameObject.");
         }
+        Debug.Log(inGame);
         ResumeGame();
     }
 
